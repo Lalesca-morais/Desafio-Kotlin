@@ -40,3 +40,6 @@ O totem de autoatendimento possui uma lista pré-definida de lanches e bebidas d
 
 Este programa não possui dependências externas além das bibliotecas padrão da linguagem Kotlin.
 
+## Linguagem de uso: Kotlin
+
+Este programa foi desenvolvido 100% em Kotlin 
