@@ -2,7 +2,6 @@ package Desafio
 
 data class ItemLanche(val codigo: Int, val nome: String, var valor: Double, var quantidade: Int)
 data class ItemBebida(val codigo: Int, val nome: String, var valor: Double, var quantidade: Int)
-
 class Compras {
     companion object {
 

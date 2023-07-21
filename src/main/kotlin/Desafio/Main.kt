@@ -1,10 +1,8 @@
 package Desafio
 
-import java.lang.NumberFormatException
 import java.util.*
 import java.util.concurrent.TimeUnit
 fun main() {
-
     val carrinhoCompraLanches = mutableListOf<ItemLanche>()
     val lanches = listOf(ItemLanche(Compras.geradorDeCodigo(), "X-burger", 10.0, 0), ItemLanche(102, "X-salada", 12.0, 0))
 
@@ -52,5 +50,4 @@ fun main() {
             println()
         }
     }
-
 }

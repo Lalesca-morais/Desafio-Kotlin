@@ -2,7 +2,6 @@ package Desafio
 
 import java.util.*
 class Bebida {
-
     fun comprarBebida(carrinhoCompraBebidas: MutableList<ItemBebida>, bebidas: List<ItemBebida>) {
         do {
             Compras.mostrarMenuBebidas(bebidas)
