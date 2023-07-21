@@ -3,11 +3,11 @@ package Desafio
 import java.util.*
 class Bebida {
 
-    fun comprarBebida(scanner: Scanner, carrinhoCompraBebidas: MutableList<ItemBebida>, bebidas: List<ItemBebida>) {
+    fun comprarBebida(carrinhoCompraBebidas: MutableList<ItemBebida>, bebidas: List<ItemBebida>) {
         do {
             Compras.mostrarMenuBebidas(bebidas)
             try {
-                val opcaoBebidas = scanner.nextInt()
+                val opcaoBebidas = readln().toIntOrNull() ?:0
                 if (opcaoBebidas < 1 || opcaoBebidas > bebidas.size) {
                     println("Opção inválida, tente novamente.")
                     continue
@@ -15,7 +15,7 @@ class Bebida {
                 val bebidaEscolhida = bebidas[opcaoBebidas - 1]
 
                 println("Digite a quantidade de ${bebidaEscolhida.nome} que deseja comprar:")
-                val quantidade = scanner.nextInt()
+                val quantidade = readln().toIntOrNull() ?:0
 
                 if (quantidade <= 0) {
                     println("Digite uma quantidade válida!")
@@ -38,13 +38,13 @@ class Bebida {
                 3 - Remover itens
                 4 - Finalizar pedido""")
 
-                when (val opcaoAcao = scanner.nextInt()) {
+                when (val opcaoAcao = readln().toIntOrNull() ?: 0) {
                     1 -> continue
-                    2 -> editarItem(scanner, carrinhoCompraBebidas)
-                    3 -> removerItens(scanner, carrinhoCompraBebidas)
+                    2 -> editarItem(carrinhoCompraBebidas)
+                    3 -> removerItens(carrinhoCompraBebidas)
                     4 -> {
                         println("Pedido finalizado!")
-                        finalizarPedido(scanner, carrinhoCompraBebidas)
+                        finalizarPedido(carrinhoCompraBebidas)
                         break
                     }
                     else -> println("Opção inválida, tente novamente")
@@ -52,17 +52,16 @@ class Bebida {
                 }
             } catch (e: InputMismatchException) {
                 println("Opção inválida, tente novamente.")
-                scanner.nextLine()
+
             } catch (e: NoSuchElementException) {
                 println("Formato inválido, para escolher o item, você deve informar o número dele.")
-                scanner.nextLine()
             }
         } while (true)
     }
 
-    fun editarItem(scanner: Scanner, carrinhoCompraBebidas: MutableList<ItemBebida>) {
+    fun editarItem(carrinhoCompraBebidas: MutableList<ItemBebida>) {
         println("Selecione o código do produto que deseja editar: ")
-        val codigoProduto = scanner.nextInt()
+        val codigoProduto = readln().toIntOrNull() ?:0
 
         var itemEscolhidoParaEditar = carrinhoCompraBebidas.find { codigoProduto == it.codigo }
 
@@ -71,24 +70,23 @@ class Bebida {
             return
         }
         println("Digite a quantidade de itens para ${itemEscolhidoParaEditar.nome}: ")
-        val novaQuantidade = scanner.nextInt()
+        val novaQuantidade = readln().toIntOrNull() ?:0
 
         if (novaQuantidade <= 0) {
             println("Quantidade inválida, não é permitido número menor que zero!")
             return
         } else {
-            itemEscolhidoParaEditar.valor =
-                itemEscolhidoParaEditar.valor * (novaQuantidade.toDouble() / itemEscolhidoParaEditar.quantidade)
+            itemEscolhidoParaEditar.valor = itemEscolhidoParaEditar.valor * (novaQuantidade.toDouble() / itemEscolhidoParaEditar.quantidade)
             itemEscolhidoParaEditar.quantidade = novaQuantidade
             println("Item ${itemEscolhidoParaEditar.nome} atualizado!")
         }
         Compras.mostrarCarrinhoAtualizadoBebida(carrinhoCompraBebidas)
-        finalizarPedido(scanner, carrinhoCompraBebidas)
+        finalizarPedido(carrinhoCompraBebidas)
     }
 
-    fun removerItens(scanner: Scanner, carrinhoCompraBebidas: MutableList<ItemBebida>) {
+    fun removerItens(carrinhoCompraBebidas: MutableList<ItemBebida>) {
         println("Selecione o código do produto que deseja remover: ")
-        val codigoProduto = scanner.nextInt()
+        val codigoProduto = readln().toIntOrNull() ?:0
 
         val itemEscolhidoParaRemover = carrinhoCompraBebidas.find { it.codigo == codigoProduto }
 
@@ -100,10 +98,10 @@ class Bebida {
         println("Item ${itemEscolhidoParaRemover.nome} removido do carrinho!")
 
         Compras.mostrarCarrinhoAtualizadoBebida(carrinhoCompraBebidas)
-        finalizarPedido(scanner, carrinhoCompraBebidas)
+        finalizarPedido(carrinhoCompraBebidas)
     }
 
-    fun finalizarPedido(scanner: Scanner, carrinhoCompraBebidas: MutableList<ItemBebida>) {
+    fun finalizarPedido(carrinhoCompraBebidas: MutableList<ItemBebida>) {
         val valorTotalDaCompra = carrinhoCompraBebidas.sumOf { it.valor }
 
         var opcaoPagamento: Int
@@ -115,7 +113,7 @@ class Bebida {
         2 - Cartão de débito
         3 - Vale refeição
         4 - Dinheiro""")
-            opcaoPagamento = scanner.nextInt()
+            opcaoPagamento = readln().toIntOrNull() ?:0
             try {
                 when (opcaoPagamento) {
                     1, 2, 3 -> {
@@ -129,8 +127,8 @@ class Bebida {
                             Compras.mostrarCarrinhoAtualizadoBebida(carrinhoCompraBebidas)
                             println("Valor total da compra: $valorTotalDaCompra")
                             println()
-                            println("Digite o valor em dinheiro que irá pagar (apenas em vírgulas): ")
-                            valorEmDinheiro = scanner.nextDouble()
+                            println("Digite o valor em dinheiro que irá pagar (apenas com pontos): ")
+                            valorEmDinheiro = readln().toDouble()
 
                             if (valorEmDinheiro >= valorTotalDaCompra) {
                                 troco = valorEmDinheiro - valorTotalDaCompra
@@ -147,10 +145,8 @@ class Bebida {
                 }
             } catch (e: InputMismatchException) {
                 println("Digite apenas números válidos!")
-                scanner.nextLine()
+                println()
             }
         }
-        println("Retornando ao menu principal...")
-        println("**************************************")
     }
 }

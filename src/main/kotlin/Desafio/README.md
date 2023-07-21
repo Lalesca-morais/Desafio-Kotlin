@@ -1,4 +1,4 @@
-# Totem de Autoatendimento - README
+# **Totem de Autoatendimento - README**
 
 Este é um código em Kotlin que implementa um "Totem de Autoatendimento", permitindo que os usuários escolham entre comprar lanches, bebidas ou sair do programa. O totem é uma aplicação de linha de comando (CLI) e foi desenvolvido utilizando a linguagem de programação Kotlin.
 
