@@ -1,6 +1,5 @@
 package Snacks.Payment
 
-import Desafio.Compras
 import Desafio.Shopping
 import Snacks.Edit.SnackItem
 
