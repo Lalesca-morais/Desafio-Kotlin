@@ -1,6 +1,6 @@
 package LanchesTest
 
-import Desafio.ItemLanche
+import Snacks.Edit.SnackItem
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.DisplayName
@@ -10,30 +10,30 @@ class LancheTest {
 
     @Test
     @DisplayName("remover produto encontrado")
-    fun testeMetodoRemovertem() {
+    fun testMethodRemoveitem() {
 
-        val carrinhoCompraLanchesTeste1 = mutableListOf(
-            ItemLanche(1, "Hambúrguer", 10.0, 2),
-            ItemLanche(2, "Batata Frita", 5.0, 1),
-            ItemLanche(3, "Refrigerante", 3.5, 3))
+        val cartBuySnacksTest1 = mutableListOf(
+            SnackItem(1, "Hambúrguer", 10.0, 2),
+            SnackItem(2, "Batata Frita", 5.0, 1),
+            SnackItem(3, "Refrigerante", 3.5, 3))
 
-        Lanche().removerItens(carrinhoCompraLanchesTeste1)
+        Snacks().removeItem(cartBuySnacksTest1)
 
-        assertEquals(2, carrinhoCompraLanchesTeste1.size)
-        assertNull(carrinhoCompraLanchesTeste1.find { it.codigo == 1 })
+        assertEquals(2, cartBuySnacksTest1.size)
+        assertNull(cartBuySnacksTest1.find { it.code == 1 })
     }
 
     @Test
     @DisplayName("retornar produto nao encontrado")
-    fun testeMetodoRemovertemNaoEncontrado() {
+    fun testMethodRemoveitem1() {
 
-        val carrinhoCompraLanchesTeste2 = mutableListOf(
-            ItemLanche(1, "Hambúrguer", 10.0, 4),
-            ItemLanche(2, "Batata Frita", 5.0, 3),
-            ItemLanche(3, "Refrigerante", 3.5, 2))
+        val cartBuySnacksTest2 = mutableListOf(
+            SnackItem(1, "Hambúrguer", 10.0, 4),
+            SnackItem(2, "Batata Frita", 5.0, 3),
+            SnackItem(3, "Refrigerante", 3.5, 2))
 
-        Lanche().removerItens(carrinhoCompraLanchesTeste2)
-        assertEquals(5, carrinhoCompraLanchesTeste2.size)
+        Snacks().removeItem(cartBuySnacksTest2)
+        assertEquals(5, cartBuySnacksTest2.size)
     }
 }
 

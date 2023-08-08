@@ -1,6 +1,7 @@
 package Snacks.Edit
 
 import Desafio.Compras
+import Desafio.Shopping
 import java.util.*
 
 class LancheShop(private val snack: List<SnackItem>) {
@@ -30,7 +31,7 @@ class LancheShop(private val snack: List<SnackItem>) {
                 val cartItem = SnackItem(Compras.codeGenerator(), chosenSnack.name, totalItemValue, amount)
                 cart.add(cartItem)
 
-                Compras.showUpdatedCartSnack(cart)
+                Shopping.showUpdatedCartSnack(cart)
 
                 val valorTotalCompra = cart.sumOf { it.value }
                 println("Valor total da compra até o momento: R$ $valorTotalCompra")

@@ -1,6 +1,8 @@
 package Snacks.Edit
 
 import Desafio.Compras
+import Desafio.Shopping
+import Snacks.Payment.FinalizeOrder
 
 class EditItem {
     companion object {
@@ -28,7 +30,7 @@ class EditItem {
                 itemToEdit.amount = newAmount
                 println("Item ${itemToEdit.name} atualizado!")
             }
-            Compras.showUpdatedCartSnack(ShoppingCartSnacks)
+            Shopping.showUpdatedCartSnack(ShoppingCartSnacks)
             FinalizeOrder(ShoppingCartSnacks)
         }
     }
