@@ -1,16 +1,14 @@
 package Desafio
 
+import Snacks.Edit.SnackItem
 import java.util.*
 import java.util.concurrent.TimeUnit
 fun main() {
-    val carrinhoCompraLanches = mutableListOf<ItemLanche>()
-    val lanches = listOf(ItemLanche(Compras.geradorDeCodigo(), "X-burger", 10.0, 0), ItemLanche(102, "X-salada", 12.0, 0))
+    val carrinhoCompraLanches = mutableListOf<SnackItem>()
+    val lanches = listOf(SnackItem(Compras.codeGenerator(), "X-burger", 10.0, 0), SnackItem(102, "X-salada", 12.0, 0))
 
-    val carrinhoCompraBebida = mutableListOf<ItemBebida>()
-    val bebidas = listOf(ItemBebida(Compras.geradorDeCodigo(), "Refrigerante", 8.0, 0), ItemBebida(202, "Suco", 6.0, 0))
-
-    val novoLanche = Lanche()
-    val novaBebida = Bebida()
+//    val carrinhoCompraBebida = mutableListOf<ItemBebida>()
+//    val bebidas = listOf(ItemBebida(Compras.codeGenerator(), "Refrigerante", 8.0, 0), ItemBebida(202, "Suco", 6.0, 0))
 
     while (true) {
         try {
@@ -28,7 +26,7 @@ fun main() {
                     println("Retornando ao menu principal...")
                 }
                 2 -> {
-                    novaBebida.comprarBebida(carrinhoCompraBebida, bebidas)
+ //                   novaBebida.comprarBebida(carrinhoCompraBebida, bebidas)
                     println("Retornando ao menu principal...")
                 }
                 3 -> {

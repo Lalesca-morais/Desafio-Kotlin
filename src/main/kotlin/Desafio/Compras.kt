@@ -1,45 +1,43 @@
 package Desafio
 
-data class ItemLanche(val codigo: Int, val nome: String, var valor: Double, var quantidade: Int)
+import Snacks.Edit.SnackItem
+
 data class ItemBebida(val codigo: Int, val nome: String, var valor: Double, var quantidade: Int)
 class Compras {
     companion object {
 
-        var contadorItensVendidos = 0
+        var counterItemsSold = 0
 
-        fun geradorDeCodigo(): Int {
-            contadorItensVendidos++
-            return contadorItensVendidos
+        fun codeGenerator(): Int {
+            counterItemsSold++
+            return counterItemsSold
         }
 
-        fun mostrarMenuBebidas(bebida: List<ItemBebida>) {
+        fun showMenuDrinks(drinks: List<ItemBebida>) {
             println("***** MENU DE BEBIDAS *****")
-            bebida.forEachIndexed { index, bebida ->
+            drinks.forEachIndexed { index, bebida ->
                 println("${index + 1}. ${bebida.nome} - R$ ${bebida.valor}")
             }
         }
 
-        fun mostrarMenuLanches(lanches: List<ItemLanche>) {
+        fun showMenuSnacks(snacks: List<SnackItem>) {
             println("***** MENU DE LANCHES *****")
-            lanches.forEachIndexed { index, lanche ->
-                println("${index + 1}. ${lanche.nome} - R$ ${lanche.valor}")
+            snacks.forEachIndexed { index, lanche -> println("${index + 1}. ${lanche.name} - R$ ${lanche.value}")
             }
         }
-
-        fun mostrarCarrinhoAtualizadoLanche(carrinho: List<ItemLanche>) {
+        fun showUpdatedCartSnack(cart: MutableList<SnackItem>) {
             println("***** CARRINHO ATUALIZADO *****")
-            carrinho.forEach { item ->
-                println("Nome: ${item.nome}")
-                println("Quantidade: ${item.quantidade}")
-                println("Valor: R$ ${item.valor}")
-                println("Código: ${item.codigo}")
+            cart.forEach { SnackItem ->
+                println("Nome: ${SnackItem.name}")
+                println("Quantidade: ${SnackItem.amount}")
+                println("Valor: R$ ${SnackItem.value}")
+                println("Código: ${SnackItem.code}")
                 println("---------------------------------")
             }
         }
-
-        fun mostrarCarrinhoAtualizadoBebida(carrinho: List<ItemBebida>) {
+        fun showUpdateCartDrink(cart: List<ItemBebida>) {
             println("***** CARRINHO ATUALIZADO *****")
-            carrinho.forEach { item ->
+            cart.forEach { item ->
                 println("Nome: ${item.nome}")
                 println("Quantidade: ${item.quantidade}")
                 println("Valor: R$ ${item.valor}")
