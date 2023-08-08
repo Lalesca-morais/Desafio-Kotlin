@@ -3,7 +3,7 @@ package Desafio
 import Snacks.Edit.SnackItem
 
 data class ItemBebida(val codigo: Int, val nome: String, var valor: Double, var quantidade: Int)
-class Compras {
+class Shopping {
     companion object {
 
         var counterItemsSold = 0
@@ -25,7 +25,7 @@ class Compras {
             snacks.forEachIndexed { index, lanche -> println("${index + 1}. ${lanche.name} - R$ ${lanche.value}")
             }
         }
-        fun showUpdatedCartSnack(cart: MutableList<SnackItem>) {
+        fun showUpdatedCartSnack(cart: List<SnackItem>) {
             println("***** CARRINHO ATUALIZADO *****")
             cart.forEach { SnackItem ->
                 println("Nome: ${SnackItem.name}")

@@ -1,14 +1,15 @@
 package Snacks.Payment
 
 import Desafio.Compras
+import Desafio.Shopping
 import Snacks.Edit.SnackItem
 
-fun Money(itens: List<SnackItem>, totalValue: Double) {
+fun Money(item: List<SnackItem>, totalValue: Double) {
     var cashValue: Double
     var change = 0.0
 
     do {
-        Compras.showUpdatedCartSnack(snackItem)
+        Shopping.showUpdatedCartSnack(item)
         println("Valor total da compra: $totalValue")
         println()
         println("Digite o valor em dinheiro que irá pagar (apenas com pontos): ")

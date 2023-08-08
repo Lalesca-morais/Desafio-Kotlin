@@ -1,6 +1,7 @@
 package Snacks.Edit
 
-import Desafio.Compras.Companion.showUpdatedCartSnack
+import Desafio.Shopping
+import Snacks.Payment.FinalizeOrder
 
 class RemoveItem {
     companion object {
@@ -18,7 +19,7 @@ class RemoveItem {
             ShoppingCartSnacks.remove(itemChosenToRemove)
             println("Item ${itemChosenToRemove.name} removido do carrinho!")
 
-            showUpdatedCartSnack(ShoppingCartSnacks)
+            Shopping.showUpdatedCartSnack(ShoppingCartSnacks)
             FinalizeOrder(ShoppingCartSnacks)
         }
     }
