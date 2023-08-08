@@ -8,7 +8,7 @@ class FinalizeOrder() {
 
         val totalValue = CalculateTotalValue(ShoppingCartSnacks)
 
-        val opcaoPagamento = FormOfPayment()
+        val opcaoPagamento = FormOfPayment().selectPaymentMethod()
 
         when (opcaoPagamento) {
             1, 2, 3 -> {
