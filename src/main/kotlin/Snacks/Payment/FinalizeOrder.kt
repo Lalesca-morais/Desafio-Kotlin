@@ -4,11 +4,11 @@ import Snacks.Edit.SnackItem
 
 class FinalizeOrder() {
 
-    fun FinalizeOrder(carrinhoCompraBebidas: MutableList<SnackItem>) {
+    fun FinalizeOrder(ShoppingCartSnacks: MutableList<SnackItem>) {
 
-        val totalValue = CalculateTotalValue(SnackItem)
+        val totalValue = CalculateTotalValue(ShoppingCartSnacks)
 
-        val opcaoPagamento = selecionarFormaPagamento()
+        val opcaoPagamento = FormOfPayment()
 
         when (opcaoPagamento) {
             1, 2, 3 -> {
